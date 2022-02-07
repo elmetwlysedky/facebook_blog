@@ -13,6 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(
+    [
+        'prefix' =>'home' , 'namespace' => 'End_user'
+    ], function() {
+
+        Route::get('/', 'HomeController@index')->name('Dashboard.home');
+
+});
+
+
+
+
+
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
