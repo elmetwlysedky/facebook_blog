@@ -322,18 +322,18 @@
 
 
                             <li class="nav-item nav-item-submenu">
-                                <a href="#" class="nav-link"><i class="icon-menu6 mr-3 icon"></i><span>Item Rate</span></a>
+                                <a href="#" class="nav-link"><i class="icon-menu6 mr-3 icon"></i><span>Category</span></a>
                                 <ul class="nav nav-group-sub">
-                                    <li class="nav-item"><a href="" class="nav-link">List Item</a></li>
-                                    <li class="nav-item"><a href="" class="nav-link">Create Item</a></li>
+                                    <li class="nav-item"><a href="{{route('Category.index')}}" class="nav-link">List Category</a></li>
+                                    <li class="nav-item"><a href="{{route('Category.create')}}" class="nav-link">Create Category</a></li>
                                 </ul>
                             </li>
 
                             <li class="nav-item nav-item-submenu">
-                                <a href="#" class="nav-link"><i class="icon-blog mr-3 icon"></i><span>Blog</span></a>
+                                <a href="#" class="nav-link"><i class="icon-blog mr-3 icon"></i><span>Product</span></a>
                                 <ul class="nav nav-group-sub">
-                                    <li class="nav-item"><a href="" class="nav-link">List Blogs</a></li>
-                                    <li class="nav-item"><a href="" class="nav-link">Create Blog</a></li>
+                                    <li class="nav-item"><a href="{{route('Product.index')}}" class="nav-link">List Category</a></li>
+                                    <li class="nav-item"><a href="{{route('Product.create')}}" class="nav-link">Create Category</a></li>
                                 </ul>
                             </li>
 

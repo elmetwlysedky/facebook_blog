@@ -18,8 +18,9 @@ Route::group(
         'prefix' =>'home' , 'namespace' => 'End_user'
     ], function() {
 
-        Route::get('/', 'HomeController@index')->name('Dashboard.home');
-
+        Route::get('/', 'HomeController@index')->name('endUser.home');
+        Route::get('category', 'HomeController@category')->name('endUser.category');
+        Route::get('product/{id}', 'HomeController@Product')->name('endUser.Product');
 });
 
 

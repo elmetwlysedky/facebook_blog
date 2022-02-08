@@ -19,14 +19,23 @@ Route::group(
     ], function() {
 
     Route::get('home', 'HomeController@index')->name('Dashboard.home');
-    ################### Route Category ##################
-    Route::get('categories', 'CategoryCotroller@index')->name('Category.index');
-    Route::get('category/create', 'CategoryCotroller@create')->name('Category.create');
-    Route::post('category/store', 'CategoryCotroller@store')->name('Category.store');
-    Route::get('category/show/{id}', 'CategoryCotroller@show')->name('Category.show');
-    Route::get('category/edit/{id}', 'CategoryCotroller@edit')->name('Category.edit');
-    Route::post('category/update/{id}', 'CategoryCotroller@update')->name('Category.update');
-    Route::post('category/destroy/{id}', 'CategoryCotroller@destroy')->name('Category.destroy');
+                ################### Route Category ##################
+    Route::get('categories', 'CategoryController@index')->name('Category.index');
+    Route::get('category/create', 'CategoryController@create')->name('Category.create');
+    Route::post('category/store', 'CategoryController@store')->name('Category.store');
+    Route::get('category/show/{id}', 'CategoryController@show')->name('Category.show');
+    Route::get('category/edit/{id}', 'CategoryController@edit')->name('Category.edit');
+    Route::post('category/update/{id}', 'CategoryController@update')->name('Category.update');
+    Route::delete('category/destroy/{id}', 'CategoryController@destroy')->name('Category.destroy');
+
+                ################### Route Product ##################
+    Route::get('products', 'ProductController@index')->name('Product.index');
+    Route::get('product/create', 'ProductController@create')->name('Product.create');
+    Route::post('product/store', 'ProductController@store')->name('Product.store');
+    Route::get('product/show/{id}', 'ProductController@show')->name('Product.show');
+    Route::get('product/edit/{id}', 'ProductController@edit')->name('Product.edit');
+    Route::post('product/update/{id}', 'ProductController@update')->name('Product.update');
+    Route::delete('product/destroy/{id}', 'ProductController@destroy')->name('Product.destroy');
 });
 
 

@@ -40,7 +40,7 @@
                 <a href="index.html" class="navbar-brand hidden-xs text-center"><img src="/End_user/images/logo.png" alt="LOGO"></a>
 
                 <ul class="nav navbar-nav navbar-left text-align-right">
-                    <li><a href="gallery.html">معرض الصور</a></li>
+                    <li><a href="{{route('endUser.category')}}">معرض الصور</a></li>
                     <li><a href="contact.html">اتصل بنا</a></li>
                     <li><a href="#">English</a></li>
                 </ul>

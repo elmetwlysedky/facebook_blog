@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.app')
 
 @section('title')
-    Categories
+    Products
 @endsection
 
 
@@ -87,7 +87,7 @@
     <!-- Content area -->
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5 class="card-title">Categories Table</h5>
+            <h5 class="card-title">products Table</h5>
             <div class="header-elements">
                 <div class="list-icons">
                     <a class="list-icons-item" data-action="collapse"></a>
@@ -99,7 +99,7 @@
 
         <div class="card-body">
             <code></code><strong> </strong>
-            <a href="{{route('Category.create')}}">
+            <a href="{{route('Product.create')}}">
                 <button class="btn bg-teal "><b><i class="icon-plus3"></i></b>
                     Create
                 </button>
@@ -110,9 +110,8 @@
         <table class="table datatable-basic">
             <thead>
             <tr>
-                <th>Name</th>
-                <th>الاسم</th>
                 <th>Photo</th>
+                <th>Category</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -120,12 +119,10 @@
                 @foreach ($Categories as $item )
                     <tr>
 
-                        <td>{{$item->name_en}}</td>
-                        <td>{{$item->name_ar}}</td>
                         <td>
                             <img src="/storage/{{$item->image}}" alt="" class="img-preview rounded"  style="width: 70px;height: 50px;">
-
                         </td>
+                        <td>{{$item->category->name_en}}</td>
 
                         </td>
                         <td>
@@ -136,11 +133,11 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="{{route('Category.show',$item->id)}}" class="dropdown-item"><i class="icon-file-eye2 mr-3 icon"></i> show </a>
-                                        <a href="{{route('Category.edit',$item->id)}}" class="dropdown-item"><i class="icon-pencil7"></i> Edit </a>
+                                        <a href="{{route('Product.show',$item->id)}}" class="dropdown-item"><i class="icon-file-eye2 mr-3 icon"></i> show </a>
+                                        <a href="{{route('Product.edit',$item->id)}}" class="dropdown-item"><i class="icon-pencil7"></i> Edit </a>
 
                                         <div class="dropdown-divider"></div>
-                                        <form action="{{route('Category.destroy',$item->id)}}" method="POST"  >
+                                        <form action="{{route('Product.destroy',$item->id)}}" method="POST"  >
                                             @csrf
                                             @method('DELETE')
 

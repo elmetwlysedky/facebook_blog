@@ -8,7 +8,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class CategoryCotroller extends Controller
+class CategoryController extends Controller
 {
     public function index()
     {
@@ -63,8 +63,8 @@ class CategoryCotroller extends Controller
 
     public function destroy($id)
     {
-        $Blog=Category::findorFail($id);
-        $Blog->delete();
+        $Category=Category::findorFail($id);
+        $Category->delete();
         return redirect()->back();
     }
 }
