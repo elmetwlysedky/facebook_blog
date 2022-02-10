@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.app')
 
 @section('title')
-Product
+Service Type
 @endsection
 
 @section('js')
@@ -18,7 +18,7 @@ Product
 
 <div class="card">
     <div class="card-header header-elements-inline">
-        <h5 class="card-title">Add Product</h5>
+        <h5 class="card-title">Add Service Type</h5>
         <div class="header-elements">
             <div class="list-icons">
                 <a class="list-icons-item" data-action="collapse"></a>
@@ -30,7 +30,7 @@ Product
 
     <div class="card-body">
         <p class="mb-4"> <strong></strong> <code></code>  </p>
-        <Form action="{{route('Product.store')}}" class="form-validate-jquery" method="post" enctype="multipart/form-data">
+        <Form action="{{route('ServiceType.store')}}" class="form-validate-jquery" method="post" enctype="multipart/form-data">
         @csrf
 
 
@@ -45,20 +45,21 @@ Product
         @endif
 
             <div class="form-group row">
-                <label class="col-form-label col-lg-3">Item Rate <span class="text-danger">*</span></label>
+                <label class="col-form-label col-lg-3">Name en<span class="text-danger">*</span></label>
                 <div class="col-lg-9">
-                    {!! Form::select('category_id',$Category , null, ['class'=>'form-control']) !!}
+                    <input type="text" name="name_en" class="form-control">
                 </div>
             </div>
-
 
             <div class="form-group row">
-                <label class="col-form-label col-lg-3">Photo<span class="text-danger">*</span></label>
+                <label class="col-form-label col-lg-3">Name ar<span class="text-danger">*</span></label>
                 <div class="col-lg-9">
-                    <input type="file" name="image" class="form-control">
+                    <input type="text" name="name_ar" class="form-control">
                 </div>
             </div>
-{{--            @include('dashboard.Category.form')--}}
+
+
+
 
                 <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-plus3"></i></b>create</button>
         </Form>

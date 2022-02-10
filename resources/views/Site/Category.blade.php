@@ -1,4 +1,4 @@
-@extends('End_user.layouts.app')
+@extends('Site.layouts.app')
 
 @section('title')
     Category
@@ -22,7 +22,7 @@
             @foreach($Categories as $Category)
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4 no-padding">
-                    <a href="{{route('endUser.Product',$Category->id)}}" class="img-holder">
+                    <a href="{{route('endUser.Images',$Category->id)}}" class="img-holder">
                         <img src="/storage/{{$Category->image}}" alt="...">
 
                         <div class="hover-content">

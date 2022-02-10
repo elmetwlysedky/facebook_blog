@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/End_user/owl-carousel/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="/End_user/css/style.css">
     <link rel="stylesheet" type="text/css" href="/End_user/css/style-en.css">
+    @yield('style')
 </head>
 
 <body>
@@ -32,17 +33,26 @@
 
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right text-align-left">
-                    <li class="active"><a href="index.html">الرئيسية</a></li>
-                    <li><a href="about.html">من نحن</a></li>
-                    <li><a href="services.html">خدماتنا</a></li>
+                    <li class="active"><a href="{{route('endUser.home')}}">{{__('front.main')}}</a></li>
+                    <li><a href="about.html">{{__('front.who_are_we')}}</a></li>
+                    <li><a href="services.html">{{__('front.our_services')}}</a></li>
                 </ul>
 
                 <a href="index.html" class="navbar-brand hidden-xs text-center"><img src="/End_user/images/logo.png" alt="LOGO"></a>
 
                 <ul class="nav navbar-nav navbar-left text-align-right">
-                    <li><a href="{{route('endUser.category')}}">معرض الصور</a></li>
-                    <li><a href="contact.html">اتصل بنا</a></li>
-                    <li><a href="#">English</a></li>
+                    <li><a href="{{route('endUser.category')}}">{{__('front.gallery')}} </a></li>
+                    <li><a href="{{route('endUser.contact')}}">{{__('front.contact_us')}} </a></li>
+                    <li>
+
+
+
+                                <select class="form-control changeLang">
+                                    <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>{{__('front.english')}}</option>
+                                    <option value="ar" {{ session()->get('locale') == 'ar' ? 'selected' : '' }}>{{__('front.arabic')}}</option>
+                                </select>
+
+                    </li>
                 </ul>
             </div>
         </div>
@@ -59,7 +69,7 @@
 <footer class="navbar-fixed-bottom text-center">
     <div class="container">
 
-        <p>جميع الحقوق محفوظة لمؤسسة صانع الصورة للتجارة  &copy; 2005-2015 </p>
+        <p> {{__('front.property_rights')}}&copy; 2005-2015 </p>
 
         <a href="#"><i class="fa fa-facebook"></i></a>
         <a href="#"><i class="fa fa-twitter"></i></a>
@@ -82,5 +92,15 @@
 <script src="/End_user/js/bootstrap.min.js"></script>
 <script src="/End_user/owl-carousel/owl.carousel.min.js"></script>
 <script src="/End_user/js/script.js"></script>
+<script type="text/javascript">
+
+    var url = "{{ route('changeLang') }}";
+
+    $(".changeLang").change(function(){
+        window.location.href = url + "?lang="+ $(this).val();
+    });
+
+</script>
+@yield('js')
 </body>
 </html>

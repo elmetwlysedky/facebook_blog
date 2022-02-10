@@ -12,8 +12,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $Categories = Category::latest()->get();
-        return view('Dashboard.Category.index',compact('Categories'));
+        $categories = Category::latest()->get();
+        return view('Dashboard.Category.index',compact('categories'));
     }
 
 
@@ -35,36 +35,36 @@ class CategoryController extends Controller
 
     public function show($id)
     {
-        $Category =Category::findorfail($id);
-        return view('Dashboard.Category.show', compact('Category'));
+        $category =Category::findOrFail($id);
+        return view('Dashboard.Category.show', compact('category'));
     }
 
 
     public function edit($id)
     {
-        $Category =Category::findorfail($id);
-        return view('Dashboard.Category.edit', compact('Category'));
+        $category =Category::findOrFail($id);
+        return view('Dashboard.Category.edit', compact('category'));
     }
 
 
     public function update(CategoryRequest $request, $id)
     {
-        $Category = Category::findorfail($id);
+        $category = Category::findOrFail($id);
         $data = $request->validated();
 
         if($request->photo != null) {
             $path = Storage::disk('public')->putFile('/Category', $request->image);
             $data['image'] = $path;
         }
-        $Category ->update($data);
+        $category ->update($data);
         return redirect()->route('Category.index');
     }
 
 
     public function destroy($id)
     {
-        $Category=Category::findorFail($id);
-        $Category->delete();
+        $category=Category::findOrFail($id);
+        $category->delete();
         return redirect()->back();
     }
 }

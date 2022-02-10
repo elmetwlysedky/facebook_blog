@@ -1,7 +1,7 @@
 @extends('Dashboard.Layouts.app')
 
 @section('title')
-Edit {{$category->name_en}}
+Edit image
 @endsection
 
 @section('js')
@@ -18,7 +18,7 @@ Edit {{$category->name_en}}
 
 <div class="card">
     <div class="card-header header-elements-inline">
-        <h5 class="card-title">Edit {{$category->name_en}}</h5>
+        <h5 class="card-title">Edit image</h5>
         <div class="header-elements">
             <div class="list-icons">
                 <a class="list-icons-item" data-action="collapse"></a>
@@ -30,7 +30,7 @@ Edit {{$category->name_en}}
 
     <div class="card-body">
         <p class="mb-4"> <strong></strong> <code></code>  </p>
-        <Form action="{{route('Category.update',$category->id)}}" class="form-validate-jquery" method="post" enctype="multipart/form-data">
+        <Form action="{{route('Images.update',$image->id)}}" class="form-validate-jquery" method="post" enctype="multipart/form-data">
         @csrf
 
 
@@ -45,23 +45,16 @@ Edit {{$category->name_en}}
         @endif
 
             <div class="form-group row">
-                <label class="col-form-label col-lg-3">Name en<span class="text-danger">*</span></label>
+                <label class="col-form-label col-lg-3">Item Rate <span class="text-danger">*</span></label>
                 <div class="col-lg-9">
-                    <input type="text" name="name_en" class="form-control" value="{{$category->name_en}}">
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-form-label col-lg-3">Name ar<span class="text-danger">*</span></label>
-                <div class="col-lg-9">
-                    <input type="text" name="name_ar" class="form-control" value="{{$category->name_ar}}">
+                    {!! Form::select('category_id',$category , null, ['class'=>'form-control']) !!}
                 </div>
             </div>
 
             <div class="form-group row">
                 <label class="col-form-label col-lg-3">Photo<span class="text-danger">*</span></label>
                 <div class="col-lg-9">
-                    <input type="file" name="image" class="form-control" value="{{$category->image}}">
+                    <input type="file" name="image" class="form-control" value="{{$image->image}}">
                 </div>
             </div>
 

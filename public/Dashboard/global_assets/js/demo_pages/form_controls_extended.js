@@ -64,7 +64,7 @@ var ExtendedFormControls = function() {
             pattern: '{{999}} - {{99}} - {{9999}}'
         });
 
-        // Product key
+        // Images key
         $('[name="format-product-key"]').formatter({
             pattern: '{{a*}} - {{999}} - {{a999}}'
         });

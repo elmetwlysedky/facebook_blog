@@ -330,14 +330,28 @@
                             </li>
 
                             <li class="nav-item nav-item-submenu">
-                                <a href="#" class="nav-link"><i class="icon-blog mr-3 icon"></i><span>Product</span></a>
+                                <a href="#" class="nav-link"><i class="icon-blog mr-3 icon"></i><span>Images</span></a>
                                 <ul class="nav nav-group-sub">
-                                    <li class="nav-item"><a href="{{route('Product.index')}}" class="nav-link">List Category</a></li>
-                                    <li class="nav-item"><a href="{{route('Product.create')}}" class="nav-link">Create Category</a></li>
+                                    <li class="nav-item"><a href="{{route('Images.index')}}" class="nav-link">List images</a></li>
+                                    <li class="nav-item"><a href="{{route('Images.create')}}" class="nav-link">Create images</a></li>
                                 </ul>
                             </li>
 
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link"><i class="icon-menu6 mr-3 icon"></i><span>Service Type</span></a>
+                                <ul class="nav nav-group-sub">
+                                    <li class="nav-item"><a href="{{route('ServiceType.index')}}" class="nav-link">List Category</a></li>
+                                    <li class="nav-item"><a href="{{route('ServiceType.create')}}" class="nav-link">Create Category</a></li>
+                                </ul>
+                            </li>
 
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link"><i class="icon-menu6 mr-3 icon"></i><span>Service Item</span></a>
+                                <ul class="nav nav-group-sub">
+                                    <li class="nav-item"><a href="{{route('ServiceItem.index')}}" class="nav-link">List Category</a></li>
+                                    <li class="nav-item"><a href="{{route('ServiceItem.create')}}" class="nav-link">Create Category</a></li>
+                                </ul>
+                            </li>
 
                             <li class="nav-item nav-item-submenu">
                                 <a href="#" class="nav-link"><i class="icon-help mr-3 icon"></i><span>Who Are You</span></a>

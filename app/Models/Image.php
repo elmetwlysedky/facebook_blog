@@ -4,18 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Service_type extends Model
+class Image extends Model
 {
     use HasFactory;
     use SoftDeletes;
     protected $dates=['deleted_at'];
     protected $fillable = [
-        'name_ar',
-        'name_en',
+        'category_id',
+        'image',
     ];
 
-    public function service_item(){
-        return $this->hasMany(Service_item::class,'service_type_id');
+    public function category(){
+        return $this->belongsTo(Category::class , 'category_id');
     }
 }
