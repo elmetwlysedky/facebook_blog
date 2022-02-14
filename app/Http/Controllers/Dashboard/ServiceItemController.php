@@ -12,7 +12,7 @@ class ServiceItemController extends Controller
 {
     public function index()
     {
-        $service_item = ServiceItem::latest()->get();
+        $service_item = ServiceItem::latest()->Paginate(3);
         return view('Dashboard.ServiceItem.index',compact('service_item'));
     }
 
@@ -63,4 +63,26 @@ class ServiceItemController extends Controller
         $service_item->delete();
         return redirect()->back();
     }
+    public function trashed()
+    {
+        $service_item =ServiceItem::onlyTrashed()->latest()->Paginate(3);
+
+        return view('Dashboard.ServiceItem.trashed',compact('service_item'));
+    }
+
+    public function hardDelete( $id)
+    {
+        $service_item =ServiceItem:: withTrashed()->where('id',$id)->first() ;
+        $service_item->forceDelete();
+        return redirect()->back();
+
+    }
+
+    public function restore( $id)
+    {
+        $service_item =ServiceItem:: withTrashed()->where('id',$id)->first() ;
+        $service_item->restore();
+        return redirect()->route('ServiceItem.index');
+    }
+
 }

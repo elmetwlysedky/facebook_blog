@@ -13,8 +13,8 @@ class ImagesController extends Controller
 {
     public function index()
     {
-        $categories = Image::latest()->get();
-        return view('Dashboard.Images.index',compact('categories'));
+        $images = Image::latest()->Paginate(5);
+        return view('Dashboard.Images.index',compact('images'));
     }
 
 
@@ -70,4 +70,27 @@ class ImagesController extends Controller
         $image->delete();
         return redirect()->back();
     }
+
+    public function trashed()
+    {
+        $image =Image::onlyTrashed()->latest()->Paginate(5);
+
+        return view('Dashboard.Images.trashed',compact('image'));
+    }
+
+    public function hardDelete( $id)
+    {
+        $image =Image:: withTrashed()->where('id',$id)->first() ;
+        $image->forceDelete();
+        return redirect()->back();
+
+    }
+
+    public function restore( $id)
+    {
+        $image =Image:: withTrashed()->where('id',$id)->first() ;
+        $image->restore();
+        return redirect()->route('Images.index');
+    }
+
 }

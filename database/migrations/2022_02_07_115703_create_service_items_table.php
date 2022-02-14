@@ -19,6 +19,7 @@ class CreateServiceItemsTable extends Migration
             $table->foreign('service_type_id')->references('id')->on('service_types');
             $table->string('name_ar');
             $table->string('name_en');
+            $table->string('type')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

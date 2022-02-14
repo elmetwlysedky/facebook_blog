@@ -13,7 +13,7 @@ class ContactRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class ContactRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' =>'required|string|max:225',
+            'work_type' => 'required|string|max:225',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'file' => 'sometimes',
         ];
     }
 }

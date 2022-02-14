@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="HandheldFriendly" content="true">
-    <title>Galary @yield('title')</title>
+    <title>Gallery @yield('title')</title>
     <link rel="icon" type="image/png" href="/End_user/images/icon.png">
     <link rel="stylesheet" type="text/css" href="/End_user/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/End_user/css/font-awesome.min.css">
@@ -28,14 +28,14 @@
                     <span class="fa fa-bars"></span>
                 </button>
 
-                <a href="index.html" class="navbar-brand hidden-sm hidden-md hidden-lg"><img src="images/logo.png" alt="LOGO"></a>
+                <a href="" class="navbar-brand hidden-sm hidden-md hidden-lg"><img src="images/logo.png" alt="LOGO"></a>
             </div>
 
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right text-align-left">
                     <li class="active"><a href="{{route('endUser.home')}}">{{__('front.main')}}</a></li>
-                    <li><a href="about.html">{{__('front.who_are_we')}}</a></li>
-                    <li><a href="services.html">{{__('front.our_services')}}</a></li>
+                    <li><a href="{{route('Site.who_are_we')}}">{{__('front.who_are_we')}}</a></li>
+                    <li><a href="{{route('Site.about')}}">{{__('front.our_services')}}</a></li>
                 </ul>
 
                 <a href="index.html" class="navbar-brand hidden-xs text-center"><img src="/End_user/images/logo.png" alt="LOGO"></a>
@@ -58,8 +58,11 @@
         </div>
     </div>
 </nav>
-@yield('content')
 
+
+>
+
+@yield('content')
 
 
 <!--===============================
@@ -70,15 +73,33 @@
     <div class="container">
 
         <p> {{__('front.property_rights')}}&copy; 2005-2015 </p>
+        @foreach($sitting as $item)
+            @if($item->key == 'facebook')
+                <a href="{{$item->value}}"><i class="fa fa-facebook"></i></a>
+            @endif
 
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-google-plus"></i></a>
-        <a href="#"><i class="fa fa-instagram"></i></a>
-        <a href="#"><i class="fa fa-youtube"></i></a>
-        <a href="#"><i class="fa fa-pinterest"></i></a>
-        <a href="#"><i class="fa fa-behance"></i></a>
-        <a href="#"><i class="fa fa-vimeo"></i></a>
+            @if($item->key == 'twitter')
+                <a href="{{$item->value}}"><i class="fa fa-twitter"></i></a>
+            @endif
+
+            @if($item->key == 'google')
+                <a href="{{$item->value}}"><i class="fa fa-google-plus"></i></a>
+            @endif
+            @if($item->key == 'instagram')
+                <a href="{{$item->value}}"><i class="fa fa-instagram"></i></a>
+            @endif
+
+        @endforeach
+
+
+
+{{--        <a href="#"><i class="fa fa-google-plus"></i></a>--}}
+{{--        <a href="#"><i class="fa fa-instagram"></i></a>--}}
+{{--        <a href="#"><i class="fa fa-youtube"></i></a>--}}
+{{--        <a href="#"><i class="fa fa-pinterest"></i></a>--}}
+{{--        <a href="#"><i class="fa fa-behance"></i></a>--}}
+{{--        <a href="#"><i class="fa fa-vimeo"></i></a>--}}
+
 
     </div>
 </footer>

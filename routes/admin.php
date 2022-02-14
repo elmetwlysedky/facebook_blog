@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::group(
     [
-        'prefix' =>'admin', 'namespace' => 'Dashboard'
+        'prefix' =>'admin', 'namespace' => 'Dashboard' , 'middleware' => 'auth'
     ], function() {
 
     Route::get('home', 'HomeController@index')->name('Dashboard.home');
@@ -28,6 +30,9 @@ Route::group(
             Route::get('edit/{id}', 'CategoryController@edit')->name('Category.edit');
             Route::post('update/{id}', 'CategoryController@update')->name('Category.update');
             Route::delete('destroy/{id}', 'CategoryController@destroy')->name('Category.destroy');
+            Route::get('trashed','CategoryController@trashed')->name('Category.trashed');
+            Route::delete('hardDelete/{id}','CategoryController@hardDelete')->name('Category.hardDelete');
+            Route::get('restore/{id}','CategoryController@restore')->name('Category.restore');
         });
                 ################### Route Images ##################
         Route::group(['prefix' => 'images'],function(){
@@ -38,6 +43,10 @@ Route::group(
             Route::get('edit/{id}', 'ImagesController@edit')->name('Images.edit');
             Route::post('update/{id}', 'ImagesController@update')->name('Images.update');
             Route::delete('destroy/{id}', 'ImagesController@destroy')->name('Images.destroy');
+            Route::get('trashed','ImagesController@trashed')->name('Images.trashed');
+            Route::delete('hardDelete/{id}','ImagesController@hardDelete')->name('Images.hardDelete');
+            Route::get('restore/{id}','ImagesController@restore')->name('Images.restore');
+
         });
                  ################### Route Service Type ##################
         Route::group(['prefix' => 'Service-type'],function() {
@@ -48,6 +57,9 @@ Route::group(
             Route::get('edit/{id}', 'ServiceTypeController@edit')->name('ServiceType.edit');
             Route::post('update/{id}', 'ServiceTypeController@update')->name('ServiceType.update');
             Route::delete('destroy/{id}', 'ServiceTypeController@destroy')->name('ServiceType.destroy');
+            Route::get('trashed','ServiceTypeController@trashed')->name('ServiceType.trashed');
+            Route::delete('hardDelete/{id}','ServiceTypeController@hardDelete')->name('ServiceType.hardDelete');
+            Route::get('restore/{id}','ServiceTypeController@restore')->name('ServiceType.restore');
 
         });
 
@@ -60,6 +72,43 @@ Route::group(
             Route::get('edit/{id}', 'ServiceItemController@edit')->name('ServiceItem.edit');
             Route::post('update/{id}', 'ServiceItemController@update')->name('ServiceItem.update');
             Route::delete('destroy/{id}', 'ServiceItemController@destroy')->name('ServiceItem.destroy');
+            Route::get('trashed','ServiceItemController@trashed')->name('ServiceItem.trashed');
+            Route::delete('hardDelete/{id}','ServiceItemController@hardDelete')->name('ServiceItem.hardDelete');
+            Route::get('restore/{id}','ServiceItemController@restore')->name('ServiceItem.restore');
+
+        });
+            ########################## Route Sitting ###############################
+        Route::get('sitting' , 'SittingController@index')->name('Sitting.index');
+        Route::get('sitting/edit/{id}', 'SittingController@edit')->name('Sitting.edit');
+        Route::post('sitting/update/{id}', 'SittingController@update')->name('Sitting.update');
+
+                ################### Route About  ##################
+        Route::group(['prefix' => 'about'],function() {
+            Route::get('all', 'AboutController@index')->name('About.index');
+            Route::get('create', 'AboutController@create')->name('About.create');
+            Route::post('store', 'AboutController@store')->name('About.store');
+            Route::get('show/{id}', 'AboutController@show')->name('About.show');
+            Route::get('edit/{id}', 'AboutController@edit')->name('About.edit');
+            Route::post('update/{id}', 'AboutController@update')->name('About.update');
+            Route::delete('destroy/{id}', 'AboutController@destroy')->name('About.destroy');
+            Route::get('trashed','AboutController@trashed')->name('About.trashed');
+            Route::delete('hardDelete/{id}','AboutController@hardDelete')->name('About.hardDelete');
+            Route::get('restore/{id}','AboutController@restore')->name('About.restore');
+
+        });
+
+        ################### Route About  ##################
+        Route::group(['prefix' => 'back-ground'],function() {
+            Route::get('all', 'BackGroundController@index')->name('BackGround.index');
+            Route::get('create', 'BackGroundController@create')->name('BackGround.create');
+            Route::post('store', 'BackGroundController@store')->name('BackGround.store');
+            Route::get('show/{id}', 'BackGroundController@show')->name('BackGround.show');
+            Route::get('edit/{id}', 'BackGroundController@edit')->name('BackGround.edit');
+            Route::post('update/{id}', 'BackGroundController@update')->name('BackGround.update');
+            Route::delete('destroy/{id}', 'BackGroundController@destroy')->name('BackGround.destroy');
+            Route::get('trashed','BackGroundController@trashed')->name('BackGround.trashed');
+            Route::delete('hardDelete/{id}','BackGroundController@hardDelete')->name('BackGround.hardDelete');
+            Route::get('restore/{id}','BackGroundController@restore')->name('BackGround.restore');
 
         });
 });

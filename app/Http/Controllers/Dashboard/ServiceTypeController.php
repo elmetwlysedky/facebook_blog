@@ -12,7 +12,7 @@ class ServiceTypeController extends Controller
 {
     public function index()
     {
-        $service_type = ServiceType::latest()->get();
+        $service_type = ServiceType::latest()->Paginate(3);
         return view('Dashboard.ServiceType.index',compact('service_type'));
     }
 
@@ -61,4 +61,26 @@ class ServiceTypeController extends Controller
         $service_type->delete();
         return redirect()->back();
     }
+    public function trashed()
+    {
+        $service_type =ServiceType::onlyTrashed()->latest()->Paginate(3);
+
+        return view('Dashboard.ServiceType.trashed',compact('service_type'));
+    }
+
+    public function hardDelete( $id)
+    {
+        $service_type =ServiceType:: withTrashed()->where('id',$id)->first() ;
+        $service_type->forceDelete();
+        return redirect()->back();
+
+    }
+
+    public function restore( $id)
+    {
+        $service_type =ServiceType:: withTrashed()->where('id',$id)->first() ;
+        $service_type->restore();
+        return redirect()->route('ServiceType.index');
+    }
+
 }

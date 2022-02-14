@@ -1,7 +1,7 @@
 @extends('Site.layouts.app')
 
 @section('title')
-    Category
+    Contact
 @endsection
 
 @section('style')
@@ -86,156 +86,53 @@
 
         <div class="row">
             <div class="col-xs-12 col-sm-8">
-                <form>
-                    <input type="text" placeholder="{{__('front.company')}}">
-                    <input type="text" placeholder="{{__('front.activity')}}">
-                    <input type="tel" placeholder="{{__('front.phone')}}">
-                    <input type="email" placeholder=" {{__('front.email')}}">
+                <form action="{{route('contact.store')}}">
+                    <input type="text" name="name" placeholder="{{__('front.company')}}">
+                    <input type="text" name="work_type" placeholder="{{__('front.activity')}}">
+                    <input type="tel" name="phone" placeholder="{{__('front.phone')}}">
+                    <input type="email" name="email" placeholder=" {{__('front.email')}}">
 
 
                     <label>{{__('front.type_service')}} </label>
 
                     <div class="row">
+                        @foreach($service_type as $type)
                         <div class="col-xs-12 col-sm-6 col-md-4">
                             <div class="box black-box margin-bottom">
                                 <div class="main-label">
                                     <label class="checkbox-holder">
                                         <input type="checkbox">
                                         <span class="checkbox-icon"></span>
-                                        <span>تصوير فوتوغرافي</span>
+                                        <span>{{$type->name_en}}</span>
                                     </label>
                                 </div>
 
 
                                 <div class="check-open">
-
+                                    @foreach($type-> service_item as $item)
                                     <label class="checkbox-holder">
                                         <input type="checkbox">
                                         <span class="checkbox-icon"></span>
-                                        <span>أجهزة إلكترونية</span>
+                                        <span>{{ $item->name_en}}</span>
                                     </label>
-
-
-                                    <label class="checkbox-holder">
-                                        <input type="checkbox">
-                                        <span class="checkbox-icon"></span>
-                                        <span> (يرجى التحديد )أخرى </span>
-                                    </label>
+                                    @endforeach
 
                                     <input type="text" placeholder="">
 
                                     <label>عدد الصور</label>
                                     <input type="number" placeholder="عدد الصور">
 
-
-
-                                    <label class="checkbox-holder">
-                                        <input type="checkbox">
-                                        <span class="checkbox-icon"></span>
-                                        <span>الممثلين  ( تصوير الأشخاص)</span>
-                                    </label>
-
                                 </div>
+
                             </div>
                         </div>
+                        @endforeach
 
-
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="box black-box margin-bottom">
-                                <div class="main-label">
-                                    <label class="checkbox-holder">
-                                        <input type="checkbox">
-                                        <span class="checkbox-icon"></span>
-                                        <span>تصوير فوتوغرافي</span>
-                                    </label>
-                                </div>
-
-
-                                <div class="check-open">
-
-                                    <label class="checkbox-holder">
-                                        <input type="checkbox">
-                                        <span class="checkbox-icon"></span>
-                                        <span>توثيق مناسبات</span>
-                                    </label>
-
-                                    <label class="checkbox-holder">
-                                        <input type="checkbox">
-                                        <span class="checkbox-icon"></span>
-                                        <span> (يرجى التحديد )أخرى </span>
-                                    </label>
-
-                                    <input type="text" placeholder="">
-
-                                    <label>عدد الصور</label>
-                                    <input type="number" placeholder="عدد الصور">
-
-                                    <label class="checkbox-holder">
-                                        <input type="checkbox">
-                                        <span class="checkbox-icon"></span>
-                                        <span>خلفية مفرغة</span>
-                                    </label>
-
-                                    <label class="checkbox-holder">
-                                        <input type="checkbox">
-                                        <span class="checkbox-icon"></span>
-                                        <span>الممثلين  ( تصوير الأشخاص)</span>
-                                    </label>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div class="box black-box margin-bottom">
-                                <div class="main-label">
-                                    <label class="checkbox-holder">
-                                        <input type="checkbox">
-                                        <span class="checkbox-icon"></span>
-                                        <span>تصوير فوتوغرافي</span>
-                                    </label>
-                                </div>
-
-
-                                <div class="check-open">
-
-
-
-                                    <label class="checkbox-holder">
-                                        <input type="checkbox">
-                                        <span class="checkbox-icon"></span>
-                                        <span> (يرجى التحديد )أخرى </span>
-                                    </label>
-
-                                    <input type="text" placeholder="">
-
-                                    <label>عدد الصور</label>
-                                    <input type="number" placeholder="عدد الصور">
-
-                                    <label class="checkbox-holder">
-                                        <input type="checkbox">
-                                        <span class="checkbox-icon"></span>
-                                        <span>خلفية مفرغة</span>
-                                    </label>
-
-
-
-
-                                    <label class="checkbox-holder">
-                                        <input type="checkbox">
-                                        <span class="checkbox-icon"></span>
-                                        <span>الممثلين  ( تصوير الأشخاص)</span>
-                                    </label>
-
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
 
                     <label>{{__('front.attach')}}</label>
-                    <input type="file" placeholder="{{__('front.attach')}}">
+                    <input type="file" name="file" placeholder="{{__('front.attach')}}">
                     <div class="btn btn-white btn-block">
                         <span><input type="submit" value="{{__('front.send')}}"></span>
                     </div>
@@ -245,9 +142,14 @@
             <div class="col-xs-12 col-sm-4">
                 <div class="box black-box text-center">
                     <h3 class="main-heading">{{__('front.contact_details')}}</h3>
-
-                    <p><i class="fa fa-envelope-o right-fa"></i> Info@pmstu.com</p>
-                    <p><i class="fa fa-phone right-fa"></i> 0123456789</p>
+            @foreach($sitting as $item)
+                @if($item ->key == 'email')
+                    <p><i class="fa fa-envelope-o right-fa"></i> {{$item->value}}</p>
+                @endif
+                @if($item -> key == 'phone')
+                    <p><i class="fa fa-phone right-fa"></i> {{$item -> value}}</p>
+                @endif
+            @endforeach
                 </div>
                 <div class="box black-box text-center">
                     <h3 class="main-heading">{{__('front.subscribe')}} </h3>

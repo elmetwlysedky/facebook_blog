@@ -212,11 +212,13 @@
                 </div>
             </li>
 
+
             <li class="nav-item">
-                <a href="#" class="navbar-nav-link">
-                    <i class="icon-switch2"></i>
+                <form class="navbar-nav-link" action="{{route('logout')}}" method="POST">
+                    @csrf
+                    <button type="submit"><i class="icon-switch2"></i></button>
                     <span class="d-md-none ml-2">Logout</span>
-                </a>
+                </form>
             </li>
         </ul>
     </div>
@@ -322,7 +324,7 @@
 
 
                             <li class="nav-item nav-item-submenu">
-                                <a href="#" class="nav-link"><i class="icon-menu6 mr-3 icon"></i><span>Category</span></a>
+                                <a href="#" class="nav-link"><i class="icon-grid6 mr-3 "></i><span>Category</span></a>
                                 <ul class="nav nav-group-sub">
                                     <li class="nav-item"><a href="{{route('Category.index')}}" class="nav-link">List Category</a></li>
                                     <li class="nav-item"><a href="{{route('Category.create')}}" class="nav-link">Create Category</a></li>
@@ -330,7 +332,7 @@
                             </li>
 
                             <li class="nav-item nav-item-submenu">
-                                <a href="#" class="nav-link"><i class="icon-blog mr-3 icon"></i><span>Images</span></a>
+                                <a href="#" class="nav-link"><i class="icon-images2 mr-3 "></i><span>Images</span></a>
                                 <ul class="nav nav-group-sub">
                                     <li class="nav-item"><a href="{{route('Images.index')}}" class="nav-link">List images</a></li>
                                     <li class="nav-item"><a href="{{route('Images.create')}}" class="nav-link">Create images</a></li>
@@ -340,45 +342,39 @@
                             <li class="nav-item nav-item-submenu">
                                 <a href="#" class="nav-link"><i class="icon-menu6 mr-3 icon"></i><span>Service Type</span></a>
                                 <ul class="nav nav-group-sub">
-                                    <li class="nav-item"><a href="{{route('ServiceType.index')}}" class="nav-link">List Category</a></li>
-                                    <li class="nav-item"><a href="{{route('ServiceType.create')}}" class="nav-link">Create Category</a></li>
+                                    <li class="nav-item"><a href="{{route('ServiceType.index')}}" class="nav-link">List Service Type</a></li>
+                                    <li class="nav-item"><a href="{{route('ServiceType.create')}}" class="nav-link">Create Service Type</a></li>
                                 </ul>
                             </li>
 
                             <li class="nav-item nav-item-submenu">
-                                <a href="#" class="nav-link"><i class="icon-menu6 mr-3 icon"></i><span>Service Item</span></a>
+                                <a href="#" class="nav-link"><i class="icon-clipboard5 mr-3"></i><span>Service Item</span></a>
                                 <ul class="nav nav-group-sub">
-                                    <li class="nav-item"><a href="{{route('ServiceItem.index')}}" class="nav-link">List Category</a></li>
-                                    <li class="nav-item"><a href="{{route('ServiceItem.create')}}" class="nav-link">Create Category</a></li>
+                                    <li class="nav-item"><a href="{{route('ServiceItem.index')}}" class="nav-link">List Service Item</a></li>
+                                    <li class="nav-item"><a href="{{route('ServiceItem.create')}}" class="nav-link">Create Service Item</a></li>
                                 </ul>
                             </li>
 
                             <li class="nav-item nav-item-submenu">
-                                <a href="#" class="nav-link"><i class="icon-help mr-3 icon"></i><span>Who Are You</span></a>
+                                <a href="#" class="nav-link"><i class="icon-help mr-3 icon"></i><span>About</span></a>
                                 <ul class="nav nav-group-sub">
-{{--                                    <li class="nav-item"><a href="{{route('Who_are_we.index')}}" class="nav-link">List Introduction</a></li>--}}
-{{--                                    <li class="nav-item"><a href="{{route('Who_are_we.create')}}" class="nav-link">Create Introduction</a></li>--}}
+                                    <li class="nav-item"><a href="{{route('About.index')}}" class="nav-link">List About</a></li>
+                                    <li class="nav-item"><a href="{{route('About.create')}}" class="nav-link">Create About</a></li>
                                 </ul>
                             </li>
 
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link"><i class="icon-image3 mr-3 icon"></i><span>Back Ground</span></a>
+                                <ul class="nav nav-group-sub">
+                                    <li class="nav-item"><a href="{{route('BackGround.index')}}" class="nav-link">List Back Ground</a></li>
+                                    <li class="nav-item"><a href="{{route('BackGround.create')}}" class="nav-link">Create Back Ground</a></li>
+                                </ul>
+                            </li>
 
+                            <li class="nav-item"><a href="{{route('Sitting.index')}}" class="nav-link"><i class="icon-gear"></i><span>Setting</span></a></li>
 
-{{--                            <li class="nav-item"><a href="{{route('Contact.index')}}" class="nav-link"><i class="icon-mail5 mr-3 icon"></i><span>Message</span></a></li>--}}
-
-
-{{--                            <li class="nav-item nav-item-submenu">--}}
-{{--                                <a href="#" class="nav-link">  <i class="icon-bubbles5 mr-3 icon"></i><span>Social Contact</span></a>--}}
-{{--                                <ul class="nav nav-group-sub">--}}
-{{--                                    <li class="nav-item"><a href="{{route('Social_contact.index')}}" class="nav-link">List Social Contact</a></li>--}}
-{{--                                    <li class="nav-item"><a href="{{route('Social_contact.create')}}" class="nav-link">Create Social Contact</a></li>--}}
-{{--                                </ul>--}}
-{{--                            </li>--}}
-                </ul>
-                    </li>
+                            <li class="nav-item"><a href="" class="nav-link"><i class="icon-mail5 mr-3 icon"></i><span>Message</span></a></li
                      <!-- /main -->
-
-
-
 
 
                 </ul>

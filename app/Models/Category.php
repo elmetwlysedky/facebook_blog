@@ -17,7 +17,7 @@ class Category extends Model
         'image',
     ];
 
-    public function image(){
+    public function photo(){
         return $this->hasMany(Image::class , 'category_id');
     }
 

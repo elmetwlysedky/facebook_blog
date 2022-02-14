@@ -15,6 +15,10 @@ class CreateSittingsTable extends Migration
     {
         Schema::create('sittings', function (Blueprint $table) {
             $table->id();
+            $table->string('key');
+            $table->longText('value');
+            $table->string('type');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

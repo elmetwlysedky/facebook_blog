@@ -12,7 +12,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::latest()->get();
+        $categories = Category::latest()->Paginate(2);
         return view('Dashboard.Category.index',compact('categories'));
     }
 
@@ -66,5 +66,26 @@ class CategoryController extends Controller
         $category=Category::findOrFail($id);
         $category->delete();
         return redirect()->back();
+    }
+    public function trashed()
+    {
+        $category =Category::onlyTrashed()->latest()->Paginate(3);
+
+        return view('Dashboard.Category.trashed',compact('category'));
+    }
+
+    public function hardDelete( $id)
+    {
+        $category =Category:: withTrashed()->where('id',$id)->first() ;
+        $category->forceDelete();
+        return redirect()->back();
+
+    }
+
+    public function restore( $id)
+    {
+        $category =Category:: withTrashed()->where('id',$id)->first() ;
+        $category->restore();
+        return redirect()->route('Category.index');
     }
 }
