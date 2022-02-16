@@ -75,11 +75,11 @@
         <p> {{__('front.property_rights')}}&copy; 2005-2015 </p>
         @foreach($sitting as $item)
             @if($item->key == 'facebook')
-                <a href="{{$item->value}}"><i class="fa fa-facebook"></i></a>
+                <a href="/{{$item->value}}"><i class="fa fa-facebook"></i></a>
             @endif
 
             @if($item->key == 'twitter')
-                <a href="{{$item->value}}"><i class="fa fa-twitter"></i></a>
+                <a href="https://{{$item->value}}"><i class="fa fa-twitter"></i></a>
             @endif
 
             @if($item->key == 'google')

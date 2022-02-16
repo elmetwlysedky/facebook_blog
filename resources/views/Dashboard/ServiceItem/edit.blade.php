@@ -30,7 +30,7 @@ Edit {{$service_item->name_en}}
 
     <div class="card-body">
         <p class="mb-4"> <strong></strong> <code></code>  </p>
-        <Form action="{{route('ServiceType.update',$service_item->id)}}" class="form-validate-jquery" method="post" enctype="multipart/form-data">
+        <Form action="{{route('ServiceItem.update',$service_item->id)}}" class="form-validate-jquery" method="post" enctype="multipart/form-data">
         @csrf
 
 
@@ -59,9 +59,17 @@ Edit {{$service_item->name_en}}
             </div>
 
             <div class="form-group row">
-                <label class="col-form-label col-lg-3">Item Rate <span class="text-danger">*</span></label>
+                <label class="col-form-label col-lg-3">service type <span class="text-danger">*</span></label>
                 <div class="col-lg-9">
                     {!! Form::select('service_item_id',$service_type , null, ['class'=>'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-form-label col-lg-3">Item Type <span class="text-danger">*</span></label>
+                <div class="col-lg-9">
+                    {!! Form::select('type', ['checkbox'=>'checkbox','string'=>'string'],null,
+                    ['class'=>'form-control']) !!}
                 </div>
             </div>
 

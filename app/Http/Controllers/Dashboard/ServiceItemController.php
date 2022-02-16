@@ -12,7 +12,7 @@ class ServiceItemController extends Controller
 {
     public function index()
     {
-        $service_item = ServiceItem::latest()->Paginate(3);
+        $service_item = ServiceItem::latest()->Paginate(7);
         return view('Dashboard.ServiceItem.index',compact('service_item'));
     }
 

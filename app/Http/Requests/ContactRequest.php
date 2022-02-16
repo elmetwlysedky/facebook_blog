@@ -26,9 +26,11 @@ class ContactRequest extends FormRequest
         return [
             'name' =>'required|string|max:225',
             'work_type' => 'required|string|max:225',
-            'phone' => 'required',
+            'phone' => 'required|string|max:20',
             'email' => 'required|email',
-            'file' => 'sometimes',
+            'file' => 'sometimes|image',
+            'items'=> 'required',
+            'service_type_id' => 'required',
         ];
     }
 }

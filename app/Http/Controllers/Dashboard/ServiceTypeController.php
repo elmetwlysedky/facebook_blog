@@ -12,8 +12,9 @@ class ServiceTypeController extends Controller
 {
     public function index()
     {
-        $service_type = ServiceType::latest()->Paginate(3);
-        return view('Dashboard.ServiceType.index',compact('service_type'));
+        return view('Dashboard.ServiceType.index',[
+            'service_type'=>ServiceType::latest()->Paginate(3),
+        ]);
     }
 
 
@@ -25,9 +26,7 @@ class ServiceTypeController extends Controller
 
     public function store(ServiceTypeRequest $request)
     {
-        $data = $request->validated();
-
-        ServiceType::create($data);
+        ServiceType::create($request->validated());
         return redirect()->route('ServiceType.index');
     }
 
@@ -57,8 +56,7 @@ class ServiceTypeController extends Controller
 
     public function destroy($id)
     {
-        $service_type=ServiceType::findOrFail($id);
-        $service_type->delete();
+        $service_type=ServiceType::destroy($id);
         return redirect()->back();
     }
     public function trashed()

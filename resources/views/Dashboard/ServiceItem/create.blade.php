@@ -65,6 +65,14 @@ Service Item Create
                 </div>
             </div>
 
+            <div class="form-group row">
+                <label class="col-form-label col-lg-3">Item Type <span class="text-danger">*</span></label>
+                <div class="col-lg-9">
+                    {!! Form::select('type', ['checkbox'=>'checkbox','string'=>'string'],
+                    ['class'=>'form-control']) !!}
+                </div>
+            </div>
+
 
                 <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-plus3"></i></b>create</button>
         </Form>

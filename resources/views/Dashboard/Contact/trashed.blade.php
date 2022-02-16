@@ -1,9 +1,8 @@
 @extends('Dashboard.layouts.app')
 
 @section('title')
-    Service Item
+    Trashed Message
 @endsection
-
 
 
 
@@ -13,10 +12,13 @@
 
 
 
+
+
+
     <!-- Content area -->
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5 class="card-title">Service Item Table</h5>
+            <h5 class="card-title">Trashed Message Table</h5>
             <div class="header-elements">
                 <div class="list-icons">
                     <a class="list-icons-item" data-action="collapse"></a>
@@ -28,14 +30,10 @@
 
         <div class="card-body">
             <code></code><strong> </strong>
-            <a href="{{route('ServiceItem.create')}}">
+            <a href="{{route('contact.index')}}">
                 <button class="btn bg-teal "><b><i class="icon-plus3"></i></b>
-                    Create
+                    home
                 </button>
-            </a>
-            <a href="{{route('ServiceItem.trashed')}}" class="btn btn-link btn-float font-size-sm font-weight-semibold text-default">
-                <i class="icon-calendar5 text-pink-300"></i>
-                <span>Trashed</span>
             </a>
         </div>
 
@@ -44,22 +42,19 @@
             <thead>
             <tr>
                 <th>Name</th>
-                <th>الاسم</th>
-                <th>Service Type</th>
-                <th>type</th>
+                <th>Email</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <div>
-                @foreach ($service_item as $item )
+                @foreach ($contact as $item )
                     <tr>
-
-                        <td>{{$item->name_en}}</td>
-                        <td>{{$item->name_ar}}</td>
-                        <td>{{$item->service_type->name_en}}</td>
-                        <td>{{$item->type}}</td>
+                        <td>{{$item->name}}</td>
+                        <td>{{$item->email}}</td>
+                        <td>
 
                         </td>
+
                         <td>
                             <div class="list-icons">
                                 <div class="list-icons-item dropdown">
@@ -68,15 +63,15 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="{{route('ServiceItem.show',$item->id)}}" class="dropdown-item"><i class="icon-file-eye2 mr-3 icon"></i> show </a>
-                                        <a href="{{route('ServiceItem.edit',$item->id)}}" class="dropdown-item"><i class="icon-pencil7"></i> Edit </a>
-
                                         <div class="dropdown-divider"></div>
-                                        <form action="{{route('ServiceItem.destroy',$item->id)}}" method="POST"  >
+                                        <a href="{{route('contact.restore',[$item->id])}}" class="dropdown-item"><i class="icon-rotate-cw2 "></i>Restore </a>
+
+
+                                        <form action="{{route('contact.hardDelete',$item->id)}}" method="POST"  >
                                             @csrf
                                             @method('DELETE')
 
-                                            <button class="dropdown-item" type="submit"><i class="icon-bin"> </i>move to trash</button>
+                                            <button class="dropdown-item" type="submit"><i class="icon-cancel-circle2 "> </i>permanent delete</button>
                                         </form>
                                     </div>
                                 </div>
@@ -93,12 +88,17 @@
 
 
         <!-- /content area -->
+
+
         <div class="card card-body border-top-1 border-top-pink text-center">
             <ul class="pagination pagination-separated align-self-center">
-                {!! $service_item->links() !!}
+                {!! $contact->links() !!}
 
             </ul>
         </div>
+
+
+
 
 @endsection
 

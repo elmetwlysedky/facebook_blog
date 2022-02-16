@@ -1,9 +1,8 @@
 @extends('Dashboard.layouts.app')
 
 @section('title')
-    Service Item
+    Message
 @endsection
-
 
 
 
@@ -16,7 +15,7 @@
     <!-- Content area -->
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5 class="card-title">Service Item Table</h5>
+            <h5 class="card-title">Messages Table</h5>
             <div class="header-elements">
                 <div class="list-icons">
                     <a class="list-icons-item" data-action="collapse"></a>
@@ -28,15 +27,11 @@
 
         <div class="card-body">
             <code></code><strong> </strong>
-            <a href="{{route('ServiceItem.create')}}">
-                <button class="btn bg-teal "><b><i class="icon-plus3"></i></b>
-                    Create
-                </button>
-            </a>
-            <a href="{{route('ServiceItem.trashed')}}" class="btn btn-link btn-float font-size-sm font-weight-semibold text-default">
-                <i class="icon-calendar5 text-pink-300"></i>
-                <span>Trashed</span>
-            </a>
+
+{{--            <a href="{{route('Category.trashed')}}" class="btn btn-link btn-float font-size-sm font-weight-semibold text-default">--}}
+{{--                <i class="icon-calendar5 text-pink-300"></i>--}}
+{{--                <span>Trashed</span>--}}
+{{--            </a>--}}
         </div>
 
 
@@ -44,20 +39,18 @@
             <thead>
             <tr>
                 <th>Name</th>
-                <th>الاسم</th>
-                <th>Service Type</th>
-                <th>type</th>
+                <th>Work Type</th>
+                <th>Email</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <div>
-                @foreach ($service_item as $item )
+                @foreach ($contact as $item )
                     <tr>
 
-                        <td>{{$item->name_en}}</td>
-                        <td>{{$item->name_ar}}</td>
-                        <td>{{$item->service_type->name_en}}</td>
-                        <td>{{$item->type}}</td>
+                        <td>{{$item->name}}</td>
+                        <td>{{$item->work_type}}</td>
+                        <td>{{$item->email}}</td>
 
                         </td>
                         <td>
@@ -68,11 +61,10 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="{{route('ServiceItem.show',$item->id)}}" class="dropdown-item"><i class="icon-file-eye2 mr-3 icon"></i> show </a>
-                                        <a href="{{route('ServiceItem.edit',$item->id)}}" class="dropdown-item"><i class="icon-pencil7"></i> Edit </a>
+                                        <a href="{{route('contact.show',$item->id)}}" class="dropdown-item"><i class="icon-file-eye2 mr-3 icon"></i> show </a>
 
                                         <div class="dropdown-divider"></div>
-                                        <form action="{{route('ServiceItem.destroy',$item->id)}}" method="POST"  >
+                                        <form action="{{route('contact.destroy',$item->id)}}" method="POST"  >
                                             @csrf
                                             @method('DELETE')
 
@@ -95,12 +87,13 @@
         <!-- /content area -->
         <div class="card card-body border-top-1 border-top-pink text-center">
             <ul class="pagination pagination-separated align-self-center">
-                {!! $service_item->links() !!}
+                {!! $contact->links() !!}
 
             </ul>
         </div>
 
 @endsection
+
 
 
 

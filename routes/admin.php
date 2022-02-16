@@ -111,6 +111,21 @@ Route::group(
             Route::get('restore/{id}','BackGroundController@restore')->name('BackGround.restore');
 
         });
-});
+
+
+
+    });
+            ################### Route message  ##################
+        Route::group(['prefix' => 'admin/message' , 'middleware' => 'auth'],function() {
+            Route::get('all', 'site\ContactController@index')->name('contact.index');
+            Route::get('show/{id}', 'site\ContactController@show')->name('contact.show');
+            Route::delete('destroy/{id}', 'site\ContactController@destroy')->name('contact.destroy');
+            Route::get('trashed','site\ContactController@trashed')->name('contact.trashed');
+            Route::delete('hardDelete/{id}','site\ContactController@hardDelete')->name('contact.hardDelete');
+            Route::get('restore/{id}','site\ContactController@restore')->name('contact.restore');
+
+        });
+
+
 
 

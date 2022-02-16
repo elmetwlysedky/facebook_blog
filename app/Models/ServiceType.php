@@ -19,4 +19,8 @@ class ServiceType extends Model
     public function service_item(){
         return $this->hasMany(ServiceItem::class,'service_type_id');
     }
+
+    public function message(){
+        return $this->hasMany(Message::class, 'service_type_id');
+    }
 }

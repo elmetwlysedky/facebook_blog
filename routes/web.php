@@ -31,9 +31,8 @@ Route::group(
 
     ######################## Route contact ###############################
     Route::get('contact/create', 'ContactController@create')->name('endUser.contact');
-    Route::get('contact/store', 'ContactController@store')->name('contact.store');
-    Route::get('contacts', 'ContactController@index')->name('contact.index');
-    Route::get('contact/show', 'ContactController@show')->name('contact.show');
+    Route::post('contact/store', 'ContactController@store')->name('contact.store');
+
 
 });
 

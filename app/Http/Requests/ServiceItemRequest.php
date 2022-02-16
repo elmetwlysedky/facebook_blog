@@ -27,6 +27,7 @@ class ServiceItemRequest extends FormRequest
             'service_type_id' => 'required',
             'name_ar' => 'required|string|max:225',
             'name_en' => 'required|string|max:225',
+            'type' => 'required'
         ];
     }
 }

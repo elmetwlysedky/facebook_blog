@@ -86,7 +86,22 @@
 
         <div class="row">
             <div class="col-xs-12 col-sm-8">
-                <form action="{{route('contact.store')}}">
+                <form action="{{route('contact.store')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+
+
                     <input type="text" name="name" placeholder="{{__('front.company')}}">
                     <input type="text" name="work_type" placeholder="{{__('front.activity')}}">
                     <input type="tel" name="phone" placeholder="{{__('front.phone')}}">
@@ -101,7 +116,7 @@
                             <div class="box black-box margin-bottom">
                                 <div class="main-label">
                                     <label class="checkbox-holder">
-                                        <input type="checkbox">
+                                        <input type="radio" name="service_type_id" value="{{$type->id}}">
                                         <span class="checkbox-icon"></span>
                                         <span>{{$type->name_en}}</span>
                                     </label>
@@ -111,17 +126,19 @@
                                 <div class="check-open">
                                     @foreach($type-> service_item as $item)
                                     <label class="checkbox-holder">
-                                        <input type="checkbox">
+                                        <input type="checkbox" name="items[]" value="{{$item->name_en}}">
                                         <span class="checkbox-icon"></span>
                                         <span>{{ $item->name_en}}</span>
                                     </label>
+
+
+                                        @if($item ->type == "string")
+
+                                    <label>{{$item->name_en}}</label>
+                                    <input type="number" name="value" placeholder="">
+
+                                        @endif
                                     @endforeach
-
-                                    <input type="text" placeholder="">
-
-                                    <label>عدد الصور</label>
-                                    <input type="number" placeholder="عدد الصور">
-
                                 </div>
 
                             </div>

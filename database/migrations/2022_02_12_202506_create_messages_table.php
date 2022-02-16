@@ -19,8 +19,11 @@ class CreateMessagesTable extends Migration
             $table->string('work_type');
             $table->string('phone');
             $table->string('email');
-            $table->softDeletes();
             $table->string('file');
+            $table->longText('items');
+            $table->unsignedBigInteger('service_type_id')->unsigned();
+            $table->foreign('service_type_id')->references('id')->on('service_types');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

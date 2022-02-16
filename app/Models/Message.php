@@ -17,5 +17,14 @@ class Message extends Model
         'phone',
         'email',
         'file',
+        'items',
+        'service_type_id'
     ];
+
+    protected $casts=[
+        'items'=>'array'
+    ];
+    public function service(){
+        return $this->belongsTo(ServiceType::class,'service_type_id');
+    }
 }
